@@ -8,8 +8,6 @@ import {
   Modal,
   Header,
   Button,
-  Radio,
-  Select,
   Image,
 } from "semantic-ui-react";
 
@@ -29,17 +27,20 @@ const List = () => {
       exp: "3 years 3 months",
     },
   ];
+  //   Global user data state
   const [data, setData] = useState(userData);
   // New user information
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [exp, setExp] = useState("");
+  //   Modal open/close state
   const [open, setOpen] = React.useState(false);
 
   // Remove User
   const removeUser = (id) => {
     setData(data.filter((i) => i.id !== id));
   };
+  //   Add new User
   const addUser = (name, email, exp) => {
     setOpen(false);
     if (name !== "" && email !== "" && exp !== "") {
@@ -53,13 +54,16 @@ const List = () => {
     }
   };
 
-
   return (
     <>
       <Modal
         closeIcon
         open={open}
-        trigger={<Button inverted color='green'>Add User</Button>}
+        trigger={
+          <Button inverted color="green">
+            Add User
+          </Button>
+        }
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
       >
@@ -90,7 +94,7 @@ const List = () => {
         </Modal.Content>
         <Modal.Actions>
           <Button color="green" onClick={() => addUser(name, email, exp)}>
-            <Icon name="checkmark"  /> Add
+            <Icon name="checkmark" /> Add
           </Button>
         </Modal.Actions>
       </Modal>
